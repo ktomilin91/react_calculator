@@ -1,26 +1,135 @@
-@import "~bootstrap/scss/bootstrap";
-$gradient: linear-gradient(180deg, $white, $gray-300);
 html {
   font-size: 10px;
 }
 body {
-  color: $gray-900;
   font-family: 'Roboto', sans-serif;
   font-size: 1.5rem;
-  font-weight: 100;
+  font-weight: 400;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: $gradient;
+  background: linear-gradient(90deg, #34e89e 0%, #0f3443 100%);
   user-select: none;
 }
-a {
-  color: inherit;
-  text-decoration: none;
+html, body, #root, #container {
+  height: 100%;
+  box-sizing: border-box;
 }
-a:hover {
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  height: auto;
+  min-height: 100%;
+}
+#calculator {
+  box-shadow: 10px 10px 35px #525252;
+  border-radius: 10px;
+}
+#displayShadow {
+  width: calc(100% + 10px);
+  margin-left: -5px;
+  height: 6rem;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  display: flex;
+}
+#displayShadowLeft {
+  background-color: #fff;
+  width: 20px;
+  border-radius: 10px 0 0 0;
+  box-shadow: inset 5px 5px 5px #bfbfbf;
+  flex-grow: 0;
+  position: relative;
+  right: -5px;
+  z-index: 99;
+}
+#displayShadowCenter {
+  background-color: #fff;
+  flex-grow: 1;
+  box-shadow: inset 0 5px 5px #bfbfbf;
+}
+#displayShadowRight {
+  background-color: #fff;
+  width: 20px;
+  border-radius: 0 10px 0 0;
+  box-shadow: inset -5px 5px 5px #bfbfbf;
+  flex-grow: 0;
+  position: relative;
+  left: -5px;
+  z-index: 99;
+}
+#display {
+  position: absolute;
+  width: calc(100% - 20px);
+  top: 0;
+  left: 10px;
+  padding: 2rem 2rem 0;
+  text-align: right;
+  font-size: 2rem;
+  box-sizing: border-box;
+  overflow-x: auto;
+  white-space: nowrap;
+  z-index: 100;
+  user-select: text;
+}
+#keyboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1px;
+  margin-top: 1px;
+}
+#keyboard button {
+  font-size: 2rem;
+  padding: 2rem 2.5rem;
+  border-radius: none;
+  border: none;
+  background-color: #efefef;
+  cursor: pointer;
+  transition: opacity .3s;
+  color: black;
+}
+#keyboard button:hover {
+  opacity: .75;
+}
+#keyboard button:active {
+  opacity: .4;
+}
+#clear, #zero {
+  grid-column: 1 / 3;
+}
+#equals {
+  grid-column: 4 / 5;
+  grid-row: 4 / 6;
+  border-radius: 0 0 10px 0;
+  box-shadow: inset -5px -5px 5px #bfbfbf;
+}
+#decimal {
+  box-shadow: inset 0 -5px 5px #bfbfbf;
+}
+#zero {
+  border-radius: 0 0 0 10px;
+  box-shadow: inset 5px -5px 5px #bfbfbf;
+}
+#one, #four, #seven, #clear {
+  box-shadow: inset 5px 0 5px #bfbfbf;
+}
+#add, #subtract, #multiply {
+  box-shadow: inset -5px 0 5px #bfbfbf;
+}
+#two, #three, #five, #six, #eight, #nine, #divide {
+  box-shadow: inset 0 0 5px #bfbfbf;
+}
+footer {
+  margin-top: 2rem;
+  color: #fff;
+  font-weight: 100;
+}
+footer a {
+  text-decoration: none;
+  color: #fff;
+}
+footer a:hover {
   text-decoration: underline;
 }
